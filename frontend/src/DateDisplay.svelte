@@ -7,7 +7,7 @@
 
 <div>
     <h2>
-        {formatDate(date, `${prefers24TimeFormat ? "HH" : 'hh'}:MM`)}
+        {formatDate(date, `${prefers24TimeFormat ? "HH" : 'hh' }:MM:ss`)}
         <span class="period">
             {#if !prefers24TimeFormat}
                 {formatDate(date, 'TT')}
