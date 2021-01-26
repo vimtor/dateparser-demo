@@ -2,12 +2,18 @@
     import Logo from './Logo.svelte'
     import DateDisplay from "./DateDisplay.svelte";
     import Calendar from "./Calendar.svelte";
+    import {onMount} from "svelte";
 
     const endpoint = 'http://localhost:5000';
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     let date = new Date()
     let text = ''
+    let interval = null
+
+    onMount(() => {
+        interval = setInterval(() => date = new Date(), 1000)
+    })
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -16,6 +22,7 @@
         if (response.ok) {
             const dateText = await response.text()
             date = new Date(dateText)
+            clearInterval(interval)
         } else {
             // TODO: Invalid date logic
         }
