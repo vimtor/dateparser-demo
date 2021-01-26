@@ -29,12 +29,13 @@
             <input aria-label="dateparser demo text" placeholder="now" type="text" bind:value={text}>
             <button>Submit</button>
         </form>
-            <DateDisplay bind:date/>
+        <DateDisplay bind:date/>
     </section>
     <section class="displays">
         <Calendar bind:date/>
     </section>
 </main>
+
 
 <style>
     * {
@@ -48,6 +49,12 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+    }
+
+    @media (min-width: 600px) {
+        main {
+            margin-top: 156px;
+        }
     }
 
     input {
