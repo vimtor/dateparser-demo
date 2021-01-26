@@ -67,7 +67,7 @@
 
     button {
         border-radius: 8px;
-        border: 1px solid black;
+        border: 1px solid hsl(358, 90%, 45%);
         padding: 0.5em 1em;
         background-color: hsl(358, 90%, 45%);
         cursor: pointer;
