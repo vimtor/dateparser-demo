@@ -10,6 +10,7 @@
 
     let date = new Date()
     let interval = null
+    let error = null
 
     onMount(() => {
         interval = setInterval(() => date = new Date(), 1000)
@@ -17,14 +18,16 @@
 
     const handleSubmit = async (event) => {
         const {text} = event.detail
-        const url = `${endpoint}?text=${encodeURI(text)}&timezone=${timezone}`;
+        let url = `${endpoint}?text=${encodeURI(text)}`;
+        if (timezone) url += `&timezone=${timezone}`;
         const response = await fetch(url);
         if (response.ok) {
             const dateText = await response.text()
             date = new Date(dateText)
+            error = null
             clearInterval(interval)
         } else {
-            // TODO: Invalid date logic
+            error = 'Dateparser was not able to parse date'
         }
     };
 </script>
@@ -32,7 +35,7 @@
 <main>
     <section>
         <Logo/>
-        <Form on:submit={handleSubmit}/>
+        <Form on:submit={handleSubmit} bind:error />
         <DateDisplay bind:date/>
     </section>
     <section class="displays">

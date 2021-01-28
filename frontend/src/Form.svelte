@@ -1,4 +1,5 @@
 <script>
+    export let error = ''
     import {createEventDispatcher} from 'svelte'
 
     let value = ''
@@ -18,6 +19,9 @@
     </label>
     <input id="text" placeholder="now" type="text" bind:value>
     <button>Submit</button>
+    {#if error}
+        <p class="error">{error}</p>
+    {/if}
 </form>
 
 <style>
@@ -54,4 +58,8 @@
         outline: none;
     }
 
+    .error {
+        color: hsl(358, 90%, 45%);
+        font-size: 0.75rem;
+    }
 </style>
