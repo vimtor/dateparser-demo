@@ -4,7 +4,7 @@
     import Calendar from "./Calendar.svelte";
     import {onMount} from "svelte";
 
-    const endpoint = 'http://localhost:5000';
+    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://dateparser-demo.herokuapp.com/'
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     let date = new Date()
