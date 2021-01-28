@@ -1,22 +1,22 @@
 <script>
+    import {onMount} from "svelte";
     import Logo from './Logo.svelte'
     import DateDisplay from "./DateDisplay.svelte";
     import Calendar from "./Calendar.svelte";
-    import {onMount} from "svelte";
+    import Form from "./Form.svelte";
 
-    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://dateparser-demo.herokuapp.com/'
+    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:5001' : 'https://dateparser-demo.herokuapp.com/'
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     let date = new Date()
-    let text = ''
     let interval = null
 
     onMount(() => {
         interval = setInterval(() => date = new Date(), 1000)
     })
 
-    const handleSubmit = async event => {
-        event.preventDefault()
+    const handleSubmit = async (event) => {
+        const {text} = event.detail
         const url = `${endpoint}?text=${encodeURI(text)}&timezone=${timezone}`;
         const response = await fetch(url);
         if (response.ok) {
@@ -32,10 +32,7 @@
 <main>
     <section>
         <Logo/>
-        <form on:submit={handleSubmit}>
-            <input aria-label="dateparser demo text" placeholder="now" type="text" bind:value={text}>
-            <button>Submit</button>
-        </form>
+        <Form on:submit={handleSubmit}/>
         <DateDisplay bind:date/>
     </section>
     <section class="displays">
@@ -62,29 +59,6 @@
         main {
             margin-top: 156px;
         }
-    }
-
-    input {
-        margin-top: 2rem;
-        border-radius: 8px;
-        border: 1px solid black;
-        padding: 0.5em;
-        outline: none;
-    }
-
-    button {
-        border-radius: 8px;
-        border: 1px solid hsl(358, 90%, 45%);
-        padding: 0.5em 1em;
-        background-color: hsl(358, 90%, 45%);
-        cursor: pointer;
-        color: white;
-    }
-
-    button:hover,
-    button:focus {
-        background-color: hsl(358, 90%, 40%);
-        outline: none;
     }
 
     section {
