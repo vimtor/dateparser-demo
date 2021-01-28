@@ -16,5 +16,10 @@ def get_date_from_text():
     return str(date)
 
 
+@app.route('/ping')
+def ping():
+    return 'OK'
+
+
 if __name__ == '__main__':
     app.run()
