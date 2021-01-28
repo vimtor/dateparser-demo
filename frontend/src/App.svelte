@@ -4,7 +4,7 @@
     import Calendar from "./Calendar.svelte";
     import {onMount} from "svelte";
 
-    const endpoint = 'http://localhost:3000';
+    const endpoint = 'http://localhost:5000';
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     let date = new Date()
