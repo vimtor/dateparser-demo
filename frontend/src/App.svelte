@@ -17,15 +17,18 @@
     })
 
     const handleSubmit = async (event) => {
-        const {text} = event.detail
-        let url = `${endpoint}?text=${encodeURI(text)}`;
-        if (timezone) url += `&timezone=${timezone}`;
+        error = null
+        clearInterval(interval)
+
+        let url = `${endpoint}?text=${encodeURI(event.detail.text)}`;
+        if (timezone) {
+            url += `&timezone=${timezone}`;
+        }
         const response = await fetch(url);
+
         if (response.ok) {
             const dateText = await response.text()
             date = new Date(dateText)
-            error = null
-            clearInterval(interval)
         } else {
             error = 'Dateparser was not able to parse date'
         }
