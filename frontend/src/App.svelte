@@ -44,6 +44,9 @@
     <section class="displays">
         <Calendar bind:date/>
     </section>
+    <footer class="copyright">
+        Built with ❤ by <a href="https://vimtor.io">Victor Navarro</a> in Twitch
+    </footer>
 </main>
 
 
@@ -73,5 +76,9 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
+    }
+
+    .copyright {
+        margin-top: 64px;
     }
 </style>
