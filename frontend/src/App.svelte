@@ -45,6 +45,9 @@
         <Calendar bind:date/>
     </section>
     <footer class="copyright">
+        Powered by <a href="https://github.com/scrapinghub/dateparser">Dateparser</a> Python library
+        <br />
+        <br />
         Built with ❤ by <a href="https://vimtor.io">Victor Navarro</a> in Twitch
     </footer>
 </main>
@@ -62,6 +65,9 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        max-width: 50rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     @media (min-width: 600px) {

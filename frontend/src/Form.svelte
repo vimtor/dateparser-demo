@@ -32,8 +32,8 @@
 
     label {
         display: block;
-        font-size: 0.75rem;
-        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        margin-bottom: 1.25em;
     }
 
     input {
