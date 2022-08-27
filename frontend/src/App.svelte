@@ -5,7 +5,7 @@
     import Calendar from "./Calendar.svelte";
     import Form from "./Form.svelte";
 
-    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:5001' : 'https://dateparser-demo.herokuapp.com/'
+    const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:5001' : 'https://dateparser-demo-production.up.railway.app/'
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     let date = new Date()
